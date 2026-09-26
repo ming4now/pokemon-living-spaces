@@ -1,0 +1,37 @@
+{
+  "fileName": "ice_pokemon_interior.glb",
+  "bytes": 136043572,
+  "sha256": "d545a4a7900ab97682004729cd513a47ab7c20d20a255d7119bab758d48e8f4a",
+  "parts": [
+    {
+      "path": "assets/parts/d545a4a7900ab976-000.bin",
+      "offset": 0,
+      "bytes": 33554432,
+      "sha256": "e2f107be19284926f46c90e46bae1e2178c6b1a6c98b11176cc8709ece8336c4"
+    },
+    {
+      "path": "assets/parts/d545a4a7900ab976-001.bin",
+      "offset": 33554432,
+      "bytes": 33554432,
+      "sha256": "b3ff2d6a2194df1520d926205c5ba3e0371727bfe2f77c757180f5c8f54dbb7e"
+    },
+    {
+      "path": "assets/parts/d545a4a7900ab976-002.bin",
+      "offset": 67108864,
+      "bytes": 33554432,
+      "sha256": "97a5e93b39be555e667bec8d8aa9a3f873771a7f59c42795d4a743dcd866e016"
+    },
+    {
+      "path": "assets/parts/d545a4a7900ab976-003.bin",
+      "offset": 100663296,
+      "bytes": 33554432,
+      "sha256": "593fc5eb06081f1d92db8f3ffb8643089848592bb7877d6192800e63397bb201"
+    },
+    {
+      "path": "assets/parts/d545a4a7900ab976-004.bin",
+      "offset": 134217728,
+      "bytes": 1825844,
+      "sha256": "85f42636913e81598605f5f38ad5573c7a9bea5a10f19832751e9dadf7997ce8"
+    }
+  ]
+}

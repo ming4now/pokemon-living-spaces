@@ -1,0 +1,13 @@
+{
+  "fileName": "fire_pokemon_interior.glb",
+  "bytes": 28525500,
+  "sha256": "f50b6e5051d415212a2ce719f6070ee479339bf929a9effeb9b22b2687340cd0",
+  "parts": [
+    {
+      "path": "assets/parts/f50b6e5051d41521-000.bin",
+      "offset": 0,
+      "bytes": 28525500,
+      "sha256": "f50b6e5051d415212a2ce719f6070ee479339bf929a9effeb9b22b2687340cd0"
+    }
+  ]
+}

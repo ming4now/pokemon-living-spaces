@@ -1,0 +1,31 @@
+{
+  "fileName": "fairy_pokemon_interior.glb",
+  "bytes": 114848024,
+  "sha256": "7eee64c898a4408d98d5055a785e5064bfb478aa3661dc4502092e9fe0a3f83b",
+  "parts": [
+    {
+      "path": "assets/parts/7eee64c898a4408d-000.bin",
+      "offset": 0,
+      "bytes": 33554432,
+      "sha256": "f22d260bad3124900d11914b9750f2a7b0fac3f1d02cd979006afcea76687939"
+    },
+    {
+      "path": "assets/parts/7eee64c898a4408d-001.bin",
+      "offset": 33554432,
+      "bytes": 33554432,
+      "sha256": "58f023ee4ff3b974f402c447b8e2a808639c70945d09e5d46f5e62fac0e9a16f"
+    },
+    {
+      "path": "assets/parts/7eee64c898a4408d-002.bin",
+      "offset": 67108864,
+      "bytes": 33554432,
+      "sha256": "88a66fe6641c66a30eb1fc22e360ed1eaa0e293f80b5bab2555422931fd1f906"
+    },
+    {
+      "path": "assets/parts/7eee64c898a4408d-003.bin",
+      "offset": 100663296,
+      "bytes": 14184728,
+      "sha256": "77185def19d0fcca9d7b248877bff5b4546f81bf2010f843c33ef075b6d21ffa"
+    }
+  ]
+}

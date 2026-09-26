@@ -1,0 +1,13 @@
+{
+  "fileName": "poison_pokemon_interior.glb",
+  "bytes": 28814224,
+  "sha256": "b45030f1bc416689f5d49ec76da9b9628b76f8b50a2a0aa5e797dad37fdb1bff",
+  "parts": [
+    {
+      "path": "assets/parts/b45030f1bc416689-000.bin",
+      "offset": 0,
+      "bytes": 28814224,
+      "sha256": "b45030f1bc416689f5d49ec76da9b9628b76f8b50a2a0aa5e797dad37fdb1bff"
+    }
+  ]
+}
