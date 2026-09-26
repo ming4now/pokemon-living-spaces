@@ -6,7 +6,13 @@
 
 ## 浏览与托管
 
-这是纯静态站点，可直接通过 GitHub Pages 托管仓库根目录。所有站内资源均采用相对路径，支持项目站点的仓库子路径，无需服务器程序或第三方数据服务。根目录的 `.nojekyll` 保留静态资源原样发布。
+这是纯静态站点，仓库已包含 GitHub Actions 自动部署工作流 `.github/workflows/deploy.yml`。首次发布到新仓库时：
+
+1. 打开仓库的 **Settings → Pages → Build and deployment**，将 **Source** 设为 **GitHub Actions**。
+2. 向 `main` 分支推送提交，或打开 **Actions → Deploy showroom to GitHub Pages → Run workflow** 手动运行部署。
+3. 等待部署成功，在 **Settings → Pages** 或该次 Actions 部署结果中打开站点链接。以后每次推送到 `main` 都会自动更新网站。
+
+所有站内资源均采用相对路径，支持项目站点的仓库子路径，无需服务器程序或第三方数据服务。部署会发布仓库根目录的静态站点，`.nojekyll` 保留静态资源原样发布。
 
 本版本需要 HTTP 或 HTTPS 服务；请通过网站链接访问，或在本目录运行 `python3 -m http.server 8080` 预览。原有离线单文件版本不包含在本仓库中。
 

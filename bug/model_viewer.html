@@ -5841,7 +5841,7 @@ function onLoaded(gltf) {
  $('room').disabled=!roomGroup;
  ['view-interior','view-perspective','view-front','view-top','focus','wireframe','reset'].forEach(id=>$(id).disabled=false);
  if(groups.size>1)$('isolate').disabled=false;
- $('metadata').textContent=Object.keys(labels).filter(id=>id!=='00'&&groups.has(id)).length+' 个家具组 · '+objectCount.toLocaleString()+' 个网格对象\n'+(info.bytes/1048576).toFixed(1)+' MB · GLB 2.0 · 内嵌离线\n'+(info.images||0)+' 张内嵌材质图片';
+ $('metadata').textContent=Object.keys(labels).filter(id=>id!=='00'&&groups.has(id)).length+' 个家具组 · '+objectCount.toLocaleString()+' 个网格对象\n'+(info.bytes/1048576).toFixed(1)+' MB · GLB 2.0 · 在线查看\n'+(info.images||0)+' 张内嵌材质图片';
  $('metadata').style.whiteSpace='pre-line';
  $('status').textContent='模型已加载 · '+Math.round(triangles).toLocaleString()+' 个三角面';
  $('loading').style.display='none';
