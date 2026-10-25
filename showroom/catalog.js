@@ -1,5 +1,6 @@
 // Add a room here to include it in the gallery and room switcher.
 // Paths are relative to outputs/index.html. `video` and `readyGlobal` are optional.
+// `concept.crop` is the main scene viewport [x, y, width, height] in original image pixels.
 window.ROOM_CATALOG = [
   {
     id: 'ice',
@@ -11,6 +12,7 @@ window.ROOM_CATALOG = [
     description: '九尾的柔软尾羽、冰晶茶几与雪花地毯，围成一间窗外落雪的安静居所。',
     features: ['昼夜光照', '窗外风雪', '独立灯光'],
     cover: 'showroom/ice-cover.webp',
+    concept: { src: 'showroom/concepts/ice.png', width: 1448, height: 1086, crop: [434, 8, 1007, 710], alt: '冰系家具原始概念图中的雪境客厅场景' },
     coverAlt: '冰蓝色房间里的阿罗拉九尾沙发、冰伊布座椅、双倍多多冰吊灯与雪花地毯',
     viewer: 'v2/model_viewer.html?v=ice-snow-20260916',
     readyGlobal: '__iceViewer',
@@ -26,6 +28,7 @@ window.ROOM_CATALOG = [
     description: '仙子伊布的缎带、胖丁软椅与花园窗景，在奶油色和暖灯中轻轻相遇。',
     features: ['昼夜光照', '花园窗景', '温柔星光'],
     cover: 'showroom/fairy-cover.webp',
+    concept: { src: 'showroom/concepts/fairy.png', width: 1448, height: 1086, crop: [439, 15, 996, 792], alt: '妖精系家具原始概念图中的粉色花语客厅场景' },
     coverAlt: '粉色奶油色房间里的仙子伊布沙发、胖丁座椅、波克基斯吊灯与星月地毯',
     viewer: 'fairy/model_viewer.html?v=refined-gallery-20260916',
     readyGlobal: '__fairyViewer'
@@ -46,6 +49,7 @@ window.ROOM_CATALOG = [
   ],
   "coverAlt": "耿鬼紫色沙发、阿柏怪座椅、双弹瓦斯吊灯与花瓣茶几的真实三维室内渲染",
   "cover": "showroom/poison-cover.webp",
+  "concept": { "src": "showroom/concepts/poison.png", "width": 1448, "height": 1086, "crop": [376, 4, 1067, 811], "alt": "毒系家具原始概念图中的暮紫客厅场景" },
   "viewer": "poison/model_viewer.html?v=three-rooms-20260923",
   "readyGlobal": "__roomViewer"
 },
@@ -64,6 +68,7 @@ window.ROOM_CATALOG = [
   ],
   "coverAlt": "蝶翼沙发、绿毛虫座椅、蜂巢吊灯与植物纹地毯的真实三维室内渲染",
   "cover": "showroom/bug-cover.webp",
+  "concept": { "src": "showroom/concepts/bug.png", "width": 1448, "height": 1086, "crop": [438, 14, 1000, 735], "alt": "虫系家具原始概念图中的森林花园客厅场景" },
   "viewer": "bug/model_viewer.html?v=three-rooms-20260923",
   "readyGlobal": "__roomViewer"
 },
@@ -82,6 +87,7 @@ window.ROOM_CATALOG = [
   ],
   "coverAlt": "喷火龙沙发、九尾座椅、熔岩茶几与火球鼠地毯的真实三维室内渲染",
   "cover": "showroom/fire-cover.webp",
+  "concept": { "src": "showroom/concepts/fire.png", "width": 1448, "height": 1086, "crop": [420, 12, 1018, 722], "alt": "火系家具原始概念图中的暖焰客厅场景" },
   "viewer": "fire/model_viewer.html?v=three-rooms-20260923",
   "readyGlobal": "__roomViewer"
 }
