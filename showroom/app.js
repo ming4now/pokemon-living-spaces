@@ -4,7 +4,7 @@
  const $=id=>document.getElementById(id);
  const byId=new Map(rooms.map(room=>[room.id,room]));
  let activeFrame=null,activeRoom=null,poll=null,loadTimer=null,generation=0,lastCard=null,currentKind='model',currentItem=null;
- const route=(id,kind='model',item)=>'#'+new URLSearchParams({room:id,...(kind!=='model'?{view:kind}:{}),...(item?{item}:{})});
+ const route=(id,kind='model',item)=>'#'+new URLSearchParams({room:id,...(kind!=='model'?{view:kind==='furniture'?'concept':kind}:{}),...(item?{item}:{})});
  function node(tag,className,text){const el=document.createElement(tag);if(className)el.className=className;if(text)el.textContent=text;return el;}
  function roomLink(room,className,text,kind='model'){
   const link=node('a',className,text);link.href=route(room.id,kind);link.dataset.room=room.id;
@@ -57,7 +57,7 @@
    const info=node('div','card-info'),kicker=node('div','card-kicker');kicker.append(node('span','',room.english||room.theme),node('span','number',String(i+1).padStart(2,'0')));info.append(kicker);
    const titleRow=node('div','card-title-row'),title=node('h2','card-title');title.append(roomLink(room,'',room.title));
    const enter=roomLink(room,'enter-room','进入空间 ↗');enter.setAttribute('aria-label','进入'+room.theme+' · '+room.title+'的 3D 空间');titleRow.append(title,enter);info.append(titleRow,node('p','card-description',room.description));
-   const designLinks=node('div','card-design-links');designLinks.append(roomLink(room,'','场景概念 ↗','concept'),roomLink(room,'','家具图鉴 · '+window.DesignGallery.items(room).length+' 件','furniture'));info.append(designLinks);
+   const designLinks=node('div','card-design-links');designLinks.append(roomLink(room,'','场景与家具概念图 · '+window.DesignGallery.items(room).length+' 件 ↗','concept'));info.append(designLinks);
    const bottom=node('div','card-bottom'),features=node('div','features');(room.features||[]).forEach(text=>features.append(node('span','feature',text)));bottom.append(features);
    if(room.video){const video=roomLink(room,'video-link','24 小时影片','video');const icon=node('span','','▷');icon.setAttribute('aria-hidden','true');video.prepend(icon);bottom.append(video);}
    info.append(bottom);card.append(info);$('room-grid').append(card);
@@ -87,21 +87,22 @@
  }
  function openRoom(room,kind,itemId){
   disposeFrame();const ticket=generation;
-  kind=['concept','furniture'].includes(kind)?kind:kind==='video'&&room.video?'video':'model';
+  kind=['concept','furniture'].includes(kind)?'concept':kind==='video'&&room.video?'video':'model';
   const item=window.DesignGallery.items(room).find(item=>item.id===itemId);
   currentKind=kind;currentItem=item?.id||null;
   const url=kind==='video'?room.video:room.viewer;
   $('gallery').hidden=true;$('exhibit').hidden=false;document.body.classList.add('in-exhibit');
   $('room-switch').value=room.id;$('mode-video').hidden=!room.video;
-  for(const mode of ['model','video','concept','furniture'])$('mode-'+mode).setAttribute('aria-pressed',String(kind===mode));
-  const design=['concept','furniture'].includes(kind);
+  for(const mode of ['model','video','concept'])$('mode-'+mode).setAttribute('aria-pressed',String(kind===mode));
+  const design=kind==='concept';
   $('exhibit-stage').hidden=design;$('design-gallery').hidden=!design;$('standalone').hidden=design||!!item;
   $('whole-room').hidden=design||!item;$('whole-room').href=route(room.id);
   $('mode-model').textContent=item?'3D 单件':'3D 空间';
-  $('back-gallery').href=item?route(room.id,'furniture'):'#';$('back-gallery').textContent=item?'← 家具图鉴':'← 返回展厅';
+  const back=item?route(room.id,'concept',design?null:item.id):'#';
+  $('back-gallery').href=back;$('back-gallery').textContent=item?(design?'← 全部概念图':'← 2D 概念图'):'← 返回展厅';
   if(design){
-   document.title=(item?.name||room.title)+' · '+(kind==='concept'?'场景概念':'家具图鉴');
-   window.DesignGallery.render(room,kind,item?.id);return;
+   document.title=(item?.name||room.title)+' · 场景与家具概念图';
+   window.DesignGallery.render(room,'concept',item?.id);return;
   }
   $('design-gallery').replaceChildren();
   $('standalone').href=url;document.title=(item?.name||room.title)+' · '+(kind==='video'?'昼夜影片':'室内设计展厅');resetLoader(room,kind,url);
@@ -123,7 +124,7 @@
    if(ticket!==generation)return;
    try{
     const win=frame.contentWindow,doc=win.document;
-    win.addEventListener('keydown',event=>{if(event.key==='Escape')location.hash=item?route(room.id,'furniture',item.id).slice(1):'';});
+    win.addEventListener('keydown',event=>{if(event.key==='Escape')location.hash=back.slice(1);});
     const inspect=()=>{
      if(ticket!==generation)return;
      try{
@@ -143,14 +144,20 @@
  function onRoute(){
   document.querySelectorAll('dialog[open]').forEach(dialog=>dialog.close());
   const params=new URLSearchParams(location.hash.slice(1)),room=byId.get(params.get('room'));
-  if(room){openRoom(room,params.get('view'),params.get('item'));return;}
+  if(room){
+   let kind=params.get('view');
+   if(kind==='furniture'){
+    kind='concept';history.replaceState(null,'',location.pathname+location.search+route(room.id,kind,params.get('item')));
+   }
+   openRoom(room,kind,params.get('item'));return;
+  }
   disposeFrame();$('gallery').hidden=false;$('exhibit').hidden=true;document.body.classList.remove('in-exhibit');document.title='室内设计展厅 · Pokémon Living Spaces';
   if(params.has('room'))history.replaceState(null,'',location.pathname+location.search);
   if(lastCard){lastCard.focus({preventScroll:true});lastCard=null;}
  }
  $('room-switch').addEventListener('change',()=>{location.hash=route($('room-switch').value,currentKind).slice(1);});
- for(const mode of ['model','video','concept','furniture'])$('mode-'+mode).addEventListener('click',()=>{location.hash=route($('room-switch').value,mode,['model','furniture'].includes(mode)?currentItem:null).slice(1);});
- document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!document.querySelector('dialog[open]')&&!$('exhibit').hidden)location.hash=currentItem?route($('room-switch').value,'furniture').slice(1):'';});
+ for(const mode of ['model','video','concept'])$('mode-'+mode).addEventListener('click',()=>{location.hash=route($('room-switch').value,mode,['model','concept'].includes(mode)?currentItem:null).slice(1);});
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!document.querySelector('dialog[open]')&&!$('exhibit').hidden)location.hash=$('back-gallery').hash;});
  window.addEventListener('hashchange',onRoute);window.addEventListener('pagehide',disposeFrame);
  window.addEventListener('pageshow',event=>{if(event.persisted)onRoute();});
  buildGallery();onRoute();
