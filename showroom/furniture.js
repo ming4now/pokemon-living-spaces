@@ -26,9 +26,11 @@ window.FURNITURE_CATALOG = {
     },
     {
       "id": "04",
-      "name": "雪妖女 · 落地灯",
-      "description": "",
-      "image": null
+      "name": "雪妖女落地灯",
+      "description": "雪妖女披风形半透灯罩，配冰蓝立柱与柔和暖光。",
+      "image": "showroom/furniture/ice/04.png",
+      "width": 1536,
+      "height": 1024
     },
     {
       "id": "05",
@@ -118,9 +120,11 @@ window.FURNITURE_CATALOG = {
     },
     {
       "id": "06",
-      "name": "波克比 · 蛋壳脚凳",
-      "description": "",
-      "image": null
+      "name": "波克比脚凳",
+      "description": "蛋壳形奶白座身搭配红蓝几何图案和软垫的脚凳。",
+      "image": "showroom/furniture/fairy/06.png",
+      "width": 1536,
+      "height": 1024
     },
     {
       "id": "07",
@@ -197,8 +201,10 @@ window.FURNITURE_CATALOG = {
     {
       "id": "06",
       "name": "臭臭泥脚凳",
-      "description": "",
-      "image": null
+      "description": "流动层叠的紫色外形做成柔软脚凳，起伏褶皱和表情细节延续黏液角色特征。",
+      "image": "showroom/furniture/poison/06.png",
+      "width": 1536,
+      "height": 1024
     },
     {
       "id": "07",
