@@ -129,11 +129,12 @@
   const header=heading(room,room.title+' · 概念图集','场景与家具，在同一页展开。欣赏完整空间，也细看每一件独立设计。');
   const sceneSection=scene(room),furnitureSection=collection(room,selected);
   const actions=el('nav','design-actions');actions.setAttribute('aria-label','概念图集导航');
-  const jump=el('button','design-action','家具图鉴 · '+items(room).length+' 件 ↓');jump.type='button';jump.addEventListener('click',()=>jumpTo(furnitureSection));
+  const jump=el('button','design-action','浏览家具 · '+items(room).length+' 件');jump.type='button';jump.addEventListener('click',()=>jumpTo(furnitureSection));
   actions.append(jump,link('进入 3D 空间 ↗',route(room,'model')));header.append(actions);
-  const top=el('button','design-action','回到场景概念 ↑');top.type='button';top.addEventListener('click',()=>jumpTo(sceneSection));
+  const top=el('button','design-action','查看场景概念');top.type='button';top.addEventListener('click',()=>jumpTo(sceneSection));
   furnitureSection.append(top);top.classList.add('back-to-scene');
-  root.append(header,sceneSection,furnitureSection);
+  const layout=el('div','concept-layout');layout.append(sceneSection,furnitureSection);
+  root.append(header,layout);
   root.scrollTop=0;
   if(selected)jumpTo(root.querySelector('.selected-concept'));
   else if(returningToCollection)jumpTo(furnitureSection);

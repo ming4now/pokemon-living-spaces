@@ -67,6 +67,31 @@ body.in-exhibit{overflow:hidden;background:#e4edf3}.exhibit-bar{height:68px;disp
 .selected-concept .art-dimensions{color:#687580}
 .furniture-card.is-selected{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
 .back-to-scene{margin-top:28px}
+.concept-layout>section{min-width:0}
+@media(min-width:1000px){
+ .concept-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:start}
+ .concept-layout .concept-scene-section{position:sticky;top:24px}
+ .concept-layout .scene-concept svg{max-height:calc(100dvh - 280px)}
+ .concept-layout .scene-caption{gap:12px;flex-wrap:wrap;line-height:1.7}
+ .concept-layout .concept-furniture-section{margin-top:0;padding:0 0 0 28px;border-top:0;border-left:1px solid var(--line)}
+ .concept-layout .concept-section-heading{gap:12px;align-items:flex-start}
+ .concept-layout .concept-section-heading .intro{font-size:13px;line-height:1.7}
+ .concept-layout .furniture-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+ .concept-layout .furniture-info{padding:16px}
+ .concept-layout .furniture-info h3{font-size:18px;line-height:1.5}
+ .concept-layout .furniture-description{min-height:0}
+ .concept-layout .furniture-actions{flex-wrap:wrap;gap:8px}
+ .concept-layout .selected-concept{padding:18px}
+ .concept-layout .furniture-detail{grid-template-columns:minmax(0,1fr);gap:20px}
+ .concept-layout .detail-visual .product-image{min-height:0}
+ .concept-layout .detail-info h3{font-size:25px}
+ .concept-layout .detail-actions{gap:8px}
+}
+@media(min-width:1000px) and (max-width:1199px){
+ .concept-layout{gap:24px}
+ .concept-layout .concept-furniture-section{padding-left:24px}
+ .concept-layout .furniture-grid{grid-template-columns:minmax(0,1fr)}
+}
 @media(max-width:650px){
  .concept-section-heading{gap:12px;margin-bottom:16px}
  .concept-section-heading h2{font-size:21px}
