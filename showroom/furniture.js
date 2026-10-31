@@ -322,9 +322,11 @@ window.FURNITURE_CATALOG = {
   "fire": [
     {
       "id": "01",
-      "name": "喷火龙长沙发",
-      "description": "",
-      "image": null
+      "name": "喷火龙沙发",
+      "description": "炽橙软垫、展翼靠背与龙首扶手组合，卷起的尾部点亮火焰饰件。",
+      "image": "showroom/furniture/fire/01.png",
+      "width": 1536,
+      "height": 1024
     },
     {
       "id": "02",
